@@ -3,6 +3,7 @@ import { getEvents } from "../actions/eventActions";
 import { connect } from "react-redux";
 import EventList from "./EventList";
 import AuthPage from "./AuthPage";
+import CreateEventFormContainer from "./CreateEventFormContainer";
 
 class EventListContainer extends React.Component {
   componentDidMount() {
@@ -13,7 +14,12 @@ class EventListContainer extends React.Component {
     if (!this.props.user) {
       return <AuthPage />;
     } else {
-      return <EventList events={this.props.events} />;
+      return (
+        <div>
+          <CreateEventFormContainer />
+          <EventList events={this.props.events} />
+        </div>
+      );
     }
     // return <EventList images={this.props.images} user={this.props.user} />;
   }
