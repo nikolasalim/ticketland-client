@@ -3,7 +3,7 @@ export default function(state = [], action = {}) {
     case "GET_EVENTS":
       return action.payload;
     case "ADD_EVENT":
-      const updatedState = { ...state, list: [...state.list, action.payload] };
+      const updatedState = { ...state, list: [action.payload, ...state.list] };
       return updatedState;
     default:
       return state;
