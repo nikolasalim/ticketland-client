@@ -1,6 +1,25 @@
 import request from "superagent";
 const baseUrl = "http://localhost:4000";
 
+// Reading all tickets
+
+export const GET_ALL_TICKETS = "GET_ALL_TICKETS";
+function gettingTickets(payload) {
+  return {
+    type: GET_ALL_TICKETS,
+    payload
+  };
+}
+
+export const getTickets = () => (dispatch, getState) => {
+  request(`${baseUrl}/ticket`)
+    .then(response => {
+      const action = gettingTickets(response.body);
+      dispatch(action);
+    })
+    .catch(console.error);
+};
+
 // Creating an ticket
 
 export const ADD_TICKET = "ADD_TICKET";
@@ -27,3 +46,27 @@ export const addTicket = data => (dispatch, getState) => {
     })
     .catch(console.error);
 };
+
+// // Reading tickets from a specific event
+
+// export const GET_ALL_TICKETS = "GET_ALL_TICKETS";
+// function gettingTickets(payload) {
+//   return {
+//     type: GET_ALL_TICKETS,
+//     payload
+//   };
+// }
+
+// export const getTickets = eventId => (dispatch, getState) => {
+//   request(`${baseUrl}/ticket`)
+//     // request(`${baseUrl}/ticket/${eventId}`)
+//     .then(response => {
+//       const action = gettingTickets(response.body);
+//       console.log("action in get tickets is", action);
+//       // action.payload.eventId = eventId;
+//       // console.log("does action get the event id?", action);
+
+//       dispatch(action);
+//     })
+//     .catch(console.error);
+// };

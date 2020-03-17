@@ -3,6 +3,7 @@ import EventDetails from "./EventDetails";
 import { connect } from "react-redux";
 import { getSingleEvent } from "../actions/eventActions";
 import CreateTicketFormContainer from "./CreateTicketFormContainer";
+import TicketListContainer from "./TicketListContainer";
 
 class EventDetailsContainer extends React.Component {
   componentDidMount() {
@@ -16,7 +17,7 @@ class EventDetailsContainer extends React.Component {
       <div>
         <EventDetails singleEvent={this.props.singleEvent} />
         <CreateTicketFormContainer />
-        {/* <TicketListContainer /> */}
+        <TicketListContainer eventId={this.props.match.params.eventId} />
       </div>
     );
   }

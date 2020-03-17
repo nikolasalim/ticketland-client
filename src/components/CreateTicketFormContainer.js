@@ -13,6 +13,11 @@ class CreateTicketFormContainer extends React.Component {
   onSubmit = event => {
     event.preventDefault();
     this.props.addTicket(this.state);
+    this.setState({
+      image: "",
+      price: "",
+      description: ""
+    });
   };
 
   onChange = event => {
@@ -24,7 +29,7 @@ class CreateTicketFormContainer extends React.Component {
   render() {
     return (
       <div>
-        <h2>Sell your ticket:</h2>
+        <h3>Sell your ticket:</h3>
         <CreateTicketForm
           onSubmit={this.onSubmit}
           onChange={this.onChange}

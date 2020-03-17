@@ -10,13 +10,18 @@ class CreateEventFormContainer extends React.Component {
     image: "",
     start_date: "",
     end_date: ""
-    // userId: ""
   };
 
   onSubmit = event => {
     event.preventDefault();
-    // this.props.login(this.state.username, this.state.password);
     this.props.addEvent(this.state);
+    this.setState({
+      title: "",
+      description: "",
+      image: "",
+      start_date: "",
+      end_date: ""
+    });
   };
 
   onChange = event => {
