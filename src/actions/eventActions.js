@@ -3,10 +3,10 @@ const baseUrl = "http://localhost:4000";
 
 // Reading all events
 
-export const GET_EVENTS = "GET_EVENTS";
+export const GET_ALL_EVENTS = "GET_ALL_EVENTS";
 function gettingEvents(payload) {
   return {
-    type: GET_EVENTS,
+    type: GET_ALL_EVENTS,
     payload
   };
 }
@@ -22,6 +22,29 @@ export const getEvents = () => (dispatch, getState) => {
       })
       .catch(console.error);
   }
+};
+
+// Reading a specific event
+
+export const GET_SINGLE_EVENT = "GET_SINGLE_EVENT";
+function gettingSingleEvent(payload) {
+  return {
+    type: GET_SINGLE_EVENT,
+    payload
+  };
+}
+
+export const getSingleEvent = eventId => (dispatch, getState) => {
+  // const state = getState();
+  // const { events } = state;
+  console.log("event ID is:", eventId);
+
+  request(`${baseUrl}/event/${eventId}`)
+    .then(response => {
+      const action = gettingSingleEvent(response.body);
+      dispatch(action);
+    })
+    .catch(console.error);
 };
 
 // Creating an event

@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 import { Switch, Route } from "react-router-dom";
 import AuthPage from "./components/AuthPage";
 import EventListContainer from "./components/EventListContainer";
+import EventDetailsContainer from "./components/EventDetailsContainer";
 // import { connect } from "react-redux";
 
 class App extends React.Component {
@@ -11,6 +12,7 @@ class App extends React.Component {
     return (
       <Provider store={store}>
         <Switch>
+          <Route path="/event/:eventId" component={EventDetailsContainer} />
           <Route path="/" component={EventListContainer} />
         </Switch>
       </Provider>
