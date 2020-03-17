@@ -12,17 +12,12 @@ class EventDetailsContainer extends React.Component {
 
     return (
       <div>
-        <div>
-          <h3>Event Details:</h3>
-          <h4>{title}</h4>
-          <img src={image} style={{ maxWidth: "200px" }}></img>
-          <p>{description}</p>
-          <p>Start date: {start_date}</p>
-          <p>End date: {end_date}</p>
-        </div>
-        <div>
-          <h3>Tickets for this event:</h3>
-        </div>
+        <h3>Event Details:</h3>
+        <h4>{title}</h4>
+        <img src={image} style={{ maxWidth: "200px" }}></img>
+        <p>{description}</p>
+        <p>Start date: {start_date}</p>
+        <p>End date: {end_date}</p>
       </div>
     );
   }

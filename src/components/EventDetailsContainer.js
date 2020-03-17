@@ -1,7 +1,8 @@
 import React from "react";
 import EventDetails from "./EventDetails";
-import { getSingleEvent } from "../actions/eventActions";
 import { connect } from "react-redux";
+import { getSingleEvent } from "../actions/eventActions";
+import CreateTicketFormContainer from "./CreateTicketFormContainer";
 
 class EventDetailsContainer extends React.Component {
   componentDidMount() {
@@ -14,6 +15,8 @@ class EventDetailsContainer extends React.Component {
     return (
       <div>
         <EventDetails singleEvent={this.props.singleEvent} />
+        <CreateTicketFormContainer />
+        {/* <TicketListContainer /> */}
       </div>
     );
   }
@@ -32,5 +35,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(EventDetailsContainer);
-
-// export default EventDetailsContainer;
