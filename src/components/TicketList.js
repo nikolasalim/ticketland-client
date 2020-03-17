@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import EditTicketFormContainer from "./EditTicketFormContainer";
 
 class TicketList extends React.Component {
@@ -7,20 +8,23 @@ class TicketList extends React.Component {
     return (
       <div>
         {this.props.tickets.map(ticket => {
-          console.log("ticket.userId is", ticket.userId);
+          // console.log("ticket.userId is", ticket.userId);
           if (ticket.eventId === parseInt(this.props.eventId)) {
             return (
-              <div>
-                <div key={ticket.id}>
-                  <img src={ticket.image} style={{ maxWidth: "200px" }}></img>
-                  <h4> Price: ${ticket.price}</h4>
-                  <p> Description: {ticket.description}</p>
+              <Link to={`/ticket/${ticket.id}`} key={ticket.id}>
+                <div>
+                  <div>
+                    <img src={ticket.image} style={{ maxWidth: "200px" }}></img>
+                    <h4> Price: ${ticket.price}</h4>
+                    <p> Description: {ticket.description}</p>
+                  </div>
+                  {/* <EditTicketFormContainer
+                    // this will go into the tickets details
+                    ticketId={ticket.id}
+                    eventId={ticket.eventId}
+                  /> */}
                 </div>
-                <EditTicketFormContainer
-                  ticketId={ticket.id}
-                  eventId={ticket.eventId}
-                />
-              </div>
+              </Link>
             );
           }
         })}

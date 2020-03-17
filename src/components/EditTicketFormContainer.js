@@ -27,8 +27,11 @@ class EditTicketFormContainer extends React.Component {
   };
 
   render() {
-    if (this.props.eventId === this.props.user.userId) {
-      console.log("this.props.eventId is:", this.props.eventId);
+    // if (!this.props.userId || !this.props.user.userId) {
+    //   return <h1>Loading...</h1>;
+    // }
+    if (this.props.userId === this.props.user.userId) {
+      console.log("this.props.userId is:", this.props.userId);
       console.log("this.props.user.userId is:", this.props.user.userId);
       return (
         <div>

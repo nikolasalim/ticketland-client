@@ -74,6 +74,28 @@ export const editTicket = (ticketId, data) => (dispatch, getState) => {
     .catch(console.error);
 };
 
+// Reading a specific ticket
+
+export const GET_SINGLE_TICKET = "GET_SINGLE_TICKET";
+function gettingSingleTicket(payload) {
+  return {
+    type: GET_SINGLE_TICKET,
+    payload
+  };
+}
+
+export const getSingleTicket = ticketId => (dispatch, getState) => {
+  // const state = getState();
+  // const { events } = state;
+
+  request(`${baseUrl}/ticket/${ticketId}`)
+    .then(response => {
+      const action = gettingSingleTicket(response.body);
+      dispatch(action);
+    })
+    .catch(console.error);
+};
+
 // // Reading tickets from a specific event
 
 // export const GET_ALL_TICKETS = "GET_ALL_TICKETS";

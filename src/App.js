@@ -5,6 +5,7 @@ import { Switch, Route } from "react-router-dom";
 import AuthPage from "./components/AuthPage";
 import EventListContainer from "./components/EventListContainer";
 import EventDetailsContainer from "./components/EventDetailsContainer";
+import TicketDetailsContainer from "./components/TicketDetailsContainer";
 // import { connect } from "react-redux";
 
 class App extends React.Component {
@@ -12,6 +13,7 @@ class App extends React.Component {
     return (
       <Provider store={store}>
         <Switch>
+          <Route path="/ticket/:ticketId" component={TicketDetailsContainer} />
           <Route path="/event/:eventId" component={EventDetailsContainer} />
           <Route path="/" component={EventListContainer} />
         </Switch>
