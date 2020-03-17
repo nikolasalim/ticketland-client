@@ -5,6 +5,14 @@ export default function(state = [], action = {}) {
     case "ADD_TICKET":
       const updatedState = [...state, action.payload];
       return updatedState;
+    case "EDIT_TICKET":
+      const editedState = state.map(ticket => {
+        if (ticket.id === action.payload.id) {
+          return action.payload;
+        }
+        return ticket;
+      });
+      return editedState;
     default:
       return state;
   }

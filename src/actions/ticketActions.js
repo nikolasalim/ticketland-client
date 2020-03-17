@@ -47,6 +47,33 @@ export const addTicket = data => (dispatch, getState) => {
     .catch(console.error);
 };
 
+// Updating an ticket
+
+export const EDIT_TICKET = "EDIT_TICKET";
+function edditingTicket(payload) {
+  return {
+    type: EDIT_TICKET,
+    payload
+  };
+}
+
+export const editTicket = (ticketId, data) => (dispatch, getState) => {
+  const state = getState();
+  const { user, singleEvent } = state;
+
+  data.eventId = singleEvent.id;
+
+  request
+    .put(`${baseUrl}/ticket/${ticketId}`)
+    .set("Authorization", `Bearer ${user.jwt}`)
+    .send(data)
+    .then(response => {
+      const action = edditingTicket(response.body);
+      dispatch(action);
+    })
+    .catch(console.error);
+};
+
 // // Reading tickets from a specific event
 
 // export const GET_ALL_TICKETS = "GET_ALL_TICKETS";
