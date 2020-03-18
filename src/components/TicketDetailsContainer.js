@@ -1,10 +1,11 @@
 import React from "react";
 import TicketDetails from "./TicketDetails";
 import { connect } from "react-redux";
+import moment from "moment";
 // import singleTicket from "../reducers/singleTicket";
 import { getSingleTicket } from "../actions/ticketActions";
 import CommentContainer from "./CommentContainer";
-import riskAlgorithm from "../riskAlgorithm";
+// import riskAlgorithm from "../riskAlgorithm";
 
 class TicketDetailsContainer extends React.Component {
   componentDidMount() {
@@ -13,7 +14,7 @@ class TicketDetailsContainer extends React.Component {
     this.props.getSingleTicket(ticketId);
   }
 
-  algorithm = () => {
+  riskAlgorithm = () => {
     let risk = 5;
 
     // if the ticket is the only ticket of the author, add 10%:
@@ -23,7 +24,7 @@ class TicketDetailsContainer extends React.Component {
         ticketCount++;
       }
     });
-    if (ticketCount > 1) {
+    if (ticketCount <= 1) {
       risk += 10;
     }
 
@@ -48,25 +49,68 @@ class TicketDetailsContainer extends React.Component {
       const percentageLimited = limitValue(percentage, 10);
       risk += percentageLimited;
     } else {
-      // if a ticket is X% more expensive than the average price, deduct X% from the risk, with a maximum of 10% deduction
+      // if a ticket is X% more expensive than the average price, deduct X% from the risk, with a maximum of 10% deduction:
 
       const percentage =
         ((this.props.singleTicket.price - averagePrice) / averagePrice) * 100;
       const percentageLimited = limitValue(percentage, 10);
       risk -= percentageLimited;
     }
-    console.log("STEP 2: risk is:", risk);
+    // console.log("STEP 2: risk is:", risk);
 
-    return risk;
+    // if the ticket was added during business hours (9-17), deduct 10% from the risk, if not, add 10% to the risk:
+
+    const createtAtFormated = moment(this.props.singleTicket.createdAt).format(
+      "HH:mm"
+    );
+    // console.log("createtAtFormated is:", createtAtFormated);
+    if (createtAtFormated < "09:00" || createtAtFormated > "17:00") {
+      risk += 5;
+    } else {
+      risk -= 5;
+    }
+
+    // console.log("STEP 3: risk is:", risk);
+
+    // if there are >3 comments on the ticket, add 5% to the risk:
+
+    const ticketComments = this.props.comments.filter(
+      comment => comment.ticketId === parseInt(this.props.match.params.ticketId)
+    );
+
+    if (ticketComments.length > 3) {
+      risk += 5;
+    }
+
+    // console.log("STEP 4: risk is:", risk);
+
+    const riskLimit = (value, min, max) => {
+      if (value < min) {
+        return min;
+      } else if (value > max) {
+        return max;
+      } else {
+        return value;
+      }
+    };
+
+    // console.log(
+    //   "STEP 5: final risk after limitation is:",
+    //   riskLimit(risk, 5, 95)
+    // );
+
+    return riskLimit(risk, 5, 95);
   };
 
   render() {
     const { ticketId } = this.props.match.params;
-    // console.log("algorithm is:", this.algorithm());
-    this.algorithm();
 
     return (
       <div>
+        <h3>
+          We calculated that the risk of this ticket being a fraud is{" "}
+          {this.riskAlgorithm()}%
+        </h3>
         <TicketDetails singleTicket={this.props.singleTicket} />
         <CommentContainer ticketId={ticketId} />
       </div>
@@ -78,7 +122,8 @@ function mapStateToProps(state) {
   return {
     singleTicket: state.singleTicket,
     // moar stuff:
-    tickets: state.tickets
+    tickets: state.tickets,
+    comments: state.comments
   };
 }
 
