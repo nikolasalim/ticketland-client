@@ -1,4 +1,4 @@
-export default function(state = [], action = {}) {
+export default function(state = { list: [], total: null }, action = {}) {
   switch (action.type) {
     case "GET_ALL_EVENTS":
       return action.payload;

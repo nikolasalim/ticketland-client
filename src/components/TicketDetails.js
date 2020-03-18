@@ -3,13 +3,29 @@ import EditTicketFormContainer from "./EditTicketFormContainer";
 
 class TicketDetails extends React.Component {
   render() {
-    const { id, image, price, description, userId } = this.props.singleTicket;
-    // console.log("TicketDetails: id is:", id);
-    // console.log("TicketDetails: userId is:", userId);
+    const {
+      id,
+      image,
+      price,
+      description,
+      userId,
+      author
+    } = this.props.singleTicket;
+
+    const title =
+      this.props.singleTicket && this.props.singleTicket.event
+        ? this.props.singleTicket.event.title
+        : null;
+
+    console.log("singleTicket is:", this.props.singleTicket);
+    console.log("event is:", this.props.singleTicket.event);
+    console.log("title is:", title);
 
     return (
       <div>
         <div key={id}>
+          <h4>Event: {title}</h4>
+          <h4>Author: {author}</h4>
           <img src={image} style={{ maxWidth: "200px" }}></img>
           <h4> Price: ${price}</h4>
           <p> Description: {description}</p>

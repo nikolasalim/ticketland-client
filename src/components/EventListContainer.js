@@ -14,6 +14,18 @@ class EventListContainer extends React.Component {
     if (!this.props.user) {
       return <AuthPage />;
     } else {
+      if (this.props.events.list.length === 0) {
+        return (
+          <div>
+            <h2>Check out the events:</h2>
+            <p>
+              Sorry, there are currently no events available. Create yours right
+              now:
+            </p>
+            <CreateEventFormContainer />
+          </div>
+        );
+      }
       return (
         <div>
           <CreateEventFormContainer />
