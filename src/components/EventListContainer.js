@@ -11,6 +11,25 @@ class EventListContainer extends React.Component {
   }
 
   render() {
+    // if (this.props.events.list.length === 0) {
+    //   return (
+    //     <div>
+    //       <h2>Check out the events:</h2>
+    //       <p>
+    //         Sorry, there are currently no events available. Create yours right
+    //         now:
+    //       </p>
+    //       <CreateEventFormContainer />
+    //     </div>
+    //   );
+    // }
+    // return (
+    //   <div>
+    //     <CreateEventFormContainer />
+    //     <EventList events={this.props.events} />
+    //   </div>
+    // );
+
     if (!this.props.user) {
       return <AuthPage />;
     } else {
@@ -33,7 +52,7 @@ class EventListContainer extends React.Component {
         </div>
       );
     }
-    // return <EventList images={this.props.images} user={this.props.user} />;
+    return <EventList images={this.props.images} user={this.props.user} />;
   }
 }
 

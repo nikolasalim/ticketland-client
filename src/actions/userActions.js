@@ -11,11 +11,11 @@ function getJWT(payload) {
   };
 }
 
-export const login = (username, password) => dispatch => {
+export const login = (/* loginInfo  */ username, password) => dispatch => {
   const data = { username: username, password: password };
   request
     .post(`${baseUrl}/login`)
-    .send(data)
+    .send(data /* loginInfo */)
     .then(response => {
       const action = getJWT(response.body);
       dispatch(action);

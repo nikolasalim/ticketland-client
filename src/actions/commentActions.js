@@ -28,25 +28,24 @@ export const addComment = data => (dispatch, getState) => {
     .catch(console.error);
 };
 
-// // Reading all events
+// Reading all comments
 
-// export const GET_ALL_EVENTS = "GET_ALL_EVENTS";
-// function gettingEvents(payload) {
-//   return {
-//     type: GET_ALL_EVENTS,
-//     payload
-//   };
-// }
+export const GET_ALL_COMMENTS = "GET_ALL_COMMENTS";
+function gettingAllComments(payload) {
+  return {
+    type: GET_ALL_COMMENTS,
+    payload
+  };
+}
 
-// export const getEvents = () => (dispatch, getState) => {
-//   const state = getState();
-//   const { events } = state;
-//   if (!events.length) {
-//     request(`${baseUrl}/event`)
-//       .then(response => {
-//         const action = gettingEvents(response.body);
-//         dispatch(action);
-//       })
-//       .catch(console.error);
-//   }
-// };
+export const getAllComments = () => (dispatch, getState) => {
+  const state = getState();
+  const { comments } = state;
+
+  request(`${baseUrl}/comment`)
+    .then(response => {
+      const action = gettingAllComments(response.body);
+      dispatch(action);
+    })
+    .catch(console.error);
+};

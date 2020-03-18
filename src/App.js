@@ -6,7 +6,7 @@ import AuthPage from "./components/AuthPage";
 import EventListContainer from "./components/EventListContainer";
 import EventDetailsContainer from "./components/EventDetailsContainer";
 import TicketDetailsContainer from "./components/TicketDetailsContainer";
-// import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 
 class App extends React.Component {
   render() {

@@ -6,7 +6,7 @@ class LoginForm extends React.Component {
       <form onSubmit={this.props.onSubmit}>
         <input
           name="username"
-          value={this.props.values.email}
+          value={this.props.values.username}
           onChange={this.props.onChange}
           placeholder="username:"
         ></input>
@@ -16,7 +16,6 @@ class LoginForm extends React.Component {
           onChange={this.props.onChange}
           placeholder="password:"
         ></input>
-
         <button type="submit">Login</button>
       </form>
     );

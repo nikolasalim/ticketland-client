@@ -17,10 +17,6 @@ class TicketDetails extends React.Component {
         ? this.props.singleTicket.event.title
         : null;
 
-    console.log("singleTicket is:", this.props.singleTicket);
-    console.log("event is:", this.props.singleTicket.event);
-    console.log("title is:", title);
-
     return (
       <div>
         <div key={id}>

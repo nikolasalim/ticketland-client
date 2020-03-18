@@ -1,23 +1,28 @@
 import React from "react";
 import { connect } from "react-redux";
-// import { getUsers, getComments } from "../actions/actions";
+import { /* getUsers, */ getAllComments } from "../actions/commentActions";
 
 class CommentSection extends React.Component {
   componentDidMount() {
-    this.props.getUsers();
-    this.props.getComments();
+    // this.props.getUsers();
+    this.props.getAllComments();
   }
 
   render() {
     return (
       <div>
         {this.props.comments.map(comment => {
-          //this.props.imageId comes from List
-          if (comment.imageId === this.props.imageId) {
+          // return (
+          //   <p>
+          //     {comment.whoCommented} says: {comment.comment}
+          //   </p>
+          // );
+
+          if (comment.ticketId === parseInt(this.props.ticketId)) {
             return (
-              <p>
-                {comment.userWhoCommented} says: {comment.comment}
-              </p>
+              <div key={comment.id}>
+                {comment.whoCommented} says: {comment.comment}
+              </div>
             );
           }
         })}
@@ -26,10 +31,10 @@ class CommentSection extends React.Component {
   }
 }
 
-const mapDispatchToProps = { getUsers, getComments };
+const mapDispatchToProps = { /* getUsers, */ getAllComments };
 
 function mapStateToProps(state) {
-  return { comments: state.comments, usersList: state.usersList };
+  return { comments: state.comments /* , usersList: state.usersList */ };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CommentSection);

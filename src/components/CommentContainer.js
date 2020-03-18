@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { addComment } from "../actions/commentActions";
 import CommentForm from "./CommentForm";
-// import CommentSection from "./CommentSection";
+import CommentSection from "./CommentSection";
 
 class CommentContainer extends React.Component {
   state = { comment: "", ticketId: null };
@@ -29,7 +29,8 @@ class CommentContainer extends React.Component {
           onChange={this.onChange}
           comment={this.state.comment}
         />
-        {/* <CommentSection imageId={this.props.ticketId} /> */}
+        {/* <CommentSection /> */}
+        <CommentSection ticketId={this.props.ticketId} />
       </div>
     );
   }

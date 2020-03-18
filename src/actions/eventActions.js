@@ -37,7 +37,6 @@ function gettingSingleEvent(payload) {
 export const getSingleEvent = eventId => (dispatch, getState) => {
   // const state = getState();
   // const { events } = state;
-  console.log("event ID is:", eventId);
 
   request(`${baseUrl}/event/${eventId}`)
     .then(response => {
