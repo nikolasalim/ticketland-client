@@ -3,6 +3,7 @@ import TicketDetails from "./TicketDetails";
 import { connect } from "react-redux";
 // import singleTicket from "../reducers/singleTicket";
 import { getSingleTicket } from "../actions/ticketActions";
+import CommentContainer from "./CommentContainer";
 
 class TicketDetailsContainer extends React.Component {
   componentDidMount() {
@@ -15,6 +16,7 @@ class TicketDetailsContainer extends React.Component {
     return (
       <div>
         <TicketDetails singleTicket={this.props.singleTicket} />
+        <CommentContainer ticketId={this.props.match.params.ticketId} />
       </div>
     );
   }
