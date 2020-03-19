@@ -32,7 +32,7 @@ class CreateEventFormContainer extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="main-box">
         <h2>Create your event:</h2>
         <CreateEventForm
           onSubmit={this.onSubmit}

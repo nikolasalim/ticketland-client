@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { getSingleEvent } from "../actions/eventActions";
 import CreateTicketFormContainer from "./CreateTicketFormContainer";
 import TicketListContainer from "./TicketListContainer";
+import "./style/EventDetailsContainer.css";
 
 class EventDetailsContainer extends React.Component {
   componentDidMount() {
@@ -15,9 +16,13 @@ class EventDetailsContainer extends React.Component {
   render() {
     return (
       <div>
-        <EventDetails singleEvent={this.props.singleEvent} />
-        <CreateTicketFormContainer />
-        <TicketListContainer eventId={this.props.match.params.eventId} />
+        <div className="main-box">
+          <EventDetails singleEvent={this.props.singleEvent} />
+          <CreateTicketFormContainer />
+        </div>
+        <div>
+          <TicketListContainer eventId={this.props.match.params.eventId} />
+        </div>
       </div>
     );
   }

@@ -1,5 +1,6 @@
 import React from "react";
 import moment from "moment";
+import "./style/EventDetails.css";
 
 class EventDetailsContainer extends React.Component {
   render() {
@@ -12,13 +13,18 @@ class EventDetailsContainer extends React.Component {
     } = this.props.singleEvent;
 
     return (
-      <div>
-        <h3>Event Details:</h3>
-        <h4>{title}</h4>
-        <img src={image} style={{ maxWidth: "200px" }}></img>
-        <p>{description}</p>
-        <p>Start date: {moment(start_date).format("LL")}</p>
-        <p>End date: {moment(end_date).format("LL")}</p>
+      <div className="main-box">
+        <h3>Event: {title}</h3>
+        <div>
+          <img src={image} style={{ maxWidth: "200px" }}></img>
+        </div>
+        <div className="info-box">
+          <p>{description}</p>
+          <div>
+            <p>Start date: {moment(start_date).format("LL")}</p>
+            <p>End date: {moment(end_date).format("LL")}</p>
+          </div>
+        </div>
       </div>
     );
   }

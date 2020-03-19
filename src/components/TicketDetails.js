@@ -21,7 +21,7 @@ class TicketDetails extends React.Component {
       <div>
         <div key={id}>
           <h4>Event: {title}</h4>
-          <h4>Author: {author}</h4>
+          <h4>Seller: {author}</h4>
           <img src={image} style={{ maxWidth: "200px" }}></img>
           <h4> Price: ${price}</h4>
           <p> Description: {description}</p>

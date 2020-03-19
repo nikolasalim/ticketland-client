@@ -23,7 +23,7 @@ class CommentContainer extends React.Component {
   render() {
     return (
       <div>
-        <h4>Comment Section:</h4>
+        <h4>Comments:</h4>
         <CommentForm
           onSubmit={this.onSubmit}
           onChange={this.onChange}

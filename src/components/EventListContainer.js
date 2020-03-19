@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import EventList from "./EventList";
 // import AuthPage from "./AuthPage";
 import CreateEventFormContainer from "./CreateEventFormContainer";
+import "./style/EventListContainer.css";
 
 let eventsCounter = 0;
 
@@ -49,11 +50,13 @@ class EventListContainer extends React.Component {
       );
     }
     return (
-      <div>
+      <div className="main-box">
         <CreateEventFormContainer />
         <EventList events={this.props.events} />
-        <button onClick={this.previousHandler}>PREVIOUS</button>
-        <button onClick={this.nextHandler}>NEXT</button>
+        <div>
+          <button onClick={this.previousHandler}>PREVIOUS</button>
+          <button onClick={this.nextHandler}>NEXT</button>
+        </div>
       </div>
     );
 

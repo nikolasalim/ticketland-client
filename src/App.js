@@ -8,6 +8,7 @@ import TicketDetailsContainer from "./components/TicketDetailsContainer";
 import AuthPage from "./components/AuthPage";
 import LandingPage from "./components/LandingPage";
 // import { Redirect } from "react-router-dom";
+import "./App.css";
 
 class App extends React.Component {
   render() {

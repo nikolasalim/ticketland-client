@@ -22,20 +22,27 @@ class CreateEventForm extends React.Component {
           onChange={this.props.onChange}
           placeholder="image:"
         ></input>
-        <input
-          type="date"
-          value={this.props.values.start_date}
-          name="start_date"
-          onChange={this.props.onChange}
-          placeholder="start_date:"
-        ></input>
-        <input
-          type="date"
-          value={this.props.values.end_date}
-          name="end_date"
-          onChange={this.props.onChange}
-          placeholder="end_date:"
-        ></input>
+        <label>
+          {" "}
+          Start date:
+          <input
+            type="date"
+            value={this.props.values.start_date}
+            name="start_date"
+            onChange={this.props.onChange}
+            placeholder="start_date:"
+          ></input>
+        </label>
+        <label>
+          End date:
+          <input
+            type="date"
+            value={this.props.values.end_date}
+            name="end_date"
+            onChange={this.props.onChange}
+            placeholder="end_date:"
+          ></input>
+        </label>
 
         <button type="submit">Create Event</button>
       </form>

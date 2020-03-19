@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import "./style/TicketList.css";
 
 class TicketList extends React.Component {
   render() {
@@ -10,12 +11,9 @@ class TicketList extends React.Component {
           if (ticket.eventId === parseInt(this.props.eventId)) {
             return (
               <Link to={`/ticket/${ticket.id}`} key={ticket.id}>
-                <div>
-                  <div>
-                    <img src={ticket.image} style={{ maxWidth: "200px" }}></img>
-                    <h4> Price: ${ticket.price}</h4>
-                    <p> Description: {ticket.description}</p>
-                  </div>
+                <div className="ticketlist-box">
+                  <img src={ticket.image} style={{ maxWidth: "200px" }}></img>
+                  <h4> Price: ${ticket.price}</h4>
                 </div>
               </Link>
             );
