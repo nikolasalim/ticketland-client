@@ -11,11 +11,11 @@ function gettingEvents(payload) {
   };
 }
 
-export const getEvents = () => (dispatch, getState) => {
+export const getEvents = (limit, offset) => (dispatch, getState) => {
   const state = getState();
   const { events } = state;
   if (!events.length) {
-    request(`${baseUrl}/event`)
+    request(`${baseUrl}/event?${limit}&${offset}`)
       .then(response => {
         const action = gettingEvents(response.body);
         dispatch(action);

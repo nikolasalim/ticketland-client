@@ -5,10 +5,35 @@ import EventList from "./EventList";
 import AuthPage from "./AuthPage";
 import CreateEventFormContainer from "./CreateEventFormContainer";
 
+let eventsCounter = 0;
+
 class EventListContainer extends React.Component {
   componentDidMount() {
     this.props.getEvents();
   }
+
+  nextHandler = () => {
+    if (eventsCounter + 2 < this.props.events.total) {
+      const limit = 2;
+      eventsCounter += limit;
+
+      const offset = eventsCounter;
+      this.props.getEvents(`limit=${limit}`, `offset=${offset}`);
+    } else {
+      alert("You've seen all the events");
+    }
+  };
+
+  previousHandler = () => {
+    if (eventsCounter <= 0) {
+      return;
+    } else {
+      const limit = 2;
+      eventsCounter -= limit;
+      const offset = eventsCounter;
+      this.props.getEvents(`limit=${limit}`, `offset=${offset}`);
+    }
+  };
 
   render() {
     // if (this.props.events.list.length === 0) {
@@ -27,6 +52,8 @@ class EventListContainer extends React.Component {
     //   <div>
     //     <CreateEventFormContainer />
     //     <EventList events={this.props.events} />
+    //     <button onClick={this.previousHandler}>PREVIOUS</button>
+    //     <button onClick={this.nextHandler}>NEXT</button>
     //   </div>
     // );
 
@@ -49,10 +76,11 @@ class EventListContainer extends React.Component {
         <div>
           <CreateEventFormContainer />
           <EventList events={this.props.events} />
+          <button onClick={this.previousHandler}>PREVIOUS</button>
+          <button onClick={this.nextHandler}>NEXT</button>
         </div>
       );
     }
-    return <EventList images={this.props.images} user={this.props.user} />;
   }
 }
 

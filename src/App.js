@@ -16,6 +16,8 @@ class App extends React.Component {
           <Route path="/ticket/:ticketId" component={TicketDetailsContainer} />
           <Route path="/event/:eventId" component={EventDetailsContainer} />
           <Route path="/" component={EventListContainer} />
+
+          {/* <Route path="/event" component={EventListContainer} /> */}
         </Switch>
       </Provider>
     );

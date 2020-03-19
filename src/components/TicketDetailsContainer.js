@@ -28,7 +28,7 @@ class TicketDetailsContainer extends React.Component {
       risk += 10;
     }
 
-    console.log("STEP 1: risk is:", risk);
+    // console.log("STEP 1: risk is:", risk);
 
     // if the ticket price is lower than the average ticket price for that event, that's a risk:
 
@@ -46,8 +46,7 @@ class TicketDetailsContainer extends React.Component {
     if (this.props.singleTicket.price < averagePrice) {
       const percentage =
         ((averagePrice - this.props.singleTicket.price) / averagePrice) * 100;
-      const percentageLimited = limitValue(percentage, 10);
-      risk += percentageLimited;
+      risk += Math.floor(percentage);
     } else {
       // if a ticket is X% more expensive than the average price, deduct X% from the risk, with a maximum of 10% deduction:
 
@@ -99,7 +98,19 @@ class TicketDetailsContainer extends React.Component {
     //   riskLimit(risk, 5, 95)
     // );
 
-    return riskLimit(risk, 5, 95);
+    const finalRisk = riskLimit(risk, 5, 95);
+
+    // from 5% to 30% = green
+    // from 31% to 50% = yellow
+    // from 51% to 95% = red
+
+    if (finalRisk >= 5 && finalRisk < 31) {
+      return <h3 style={{ color: "green" }}>Risk of fraud: {finalRisk}%</h3>;
+    } else if (finalRisk >= 30 && finalRisk < 51) {
+      return <h3 style={{ color: "yellow" }}>Risk of fraud: {finalRisk}%</h3>;
+    } else {
+      return <h3 style={{ color: "red" }}>Risk of fraud: {finalRisk}%</h3>;
+    }
   };
 
   render() {
@@ -107,10 +118,8 @@ class TicketDetailsContainer extends React.Component {
 
     return (
       <div>
-        <h3>
-          We calculated that the risk of this ticket being a fraud is{" "}
-          {this.riskAlgorithm()}%
-        </h3>
+        {this.riskAlgorithm()}
+        {/* <h3>Risk of fraud: {this.riskAlgorithm()}%</h3> */}
         <TicketDetails singleTicket={this.props.singleTicket} />
         <CommentContainer ticketId={ticketId} />
       </div>

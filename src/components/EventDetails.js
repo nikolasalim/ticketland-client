@@ -1,4 +1,5 @@
 import React from "react";
+import moment from "moment";
 
 class EventDetailsContainer extends React.Component {
   render() {
@@ -16,8 +17,8 @@ class EventDetailsContainer extends React.Component {
         <h4>{title}</h4>
         <img src={image} style={{ maxWidth: "200px" }}></img>
         <p>{description}</p>
-        <p>Start date: {start_date}</p>
-        <p>End date: {end_date}</p>
+        <p>Start date: {moment(start_date).format("LL")}</p>
+        <p>End date: {moment(end_date).format("LL")}</p>
       </div>
     );
   }
