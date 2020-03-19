@@ -29,7 +29,6 @@ class CommentContainer extends React.Component {
           onChange={this.onChange}
           comment={this.state.comment}
         />
-        {/* <CommentSection /> */}
         <CommentSection ticketId={this.props.ticketId} />
       </div>
     );

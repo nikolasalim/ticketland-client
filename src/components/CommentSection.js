@@ -1,10 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
-import { /* getUsers, */ getAllComments } from "../actions/commentActions";
+import { getAllComments } from "../actions/commentActions";
 
 class CommentSection extends React.Component {
   componentDidMount() {
-    // this.props.getUsers();
     this.props.getAllComments();
   }
 
@@ -12,12 +11,6 @@ class CommentSection extends React.Component {
     return (
       <div>
         {this.props.comments.map(comment => {
-          // return (
-          //   <p>
-          //     {comment.whoCommented} says: {comment.comment}
-          //   </p>
-          // );
-
           if (comment.ticketId === parseInt(this.props.ticketId)) {
             return (
               <div key={comment.id}>
@@ -31,10 +24,10 @@ class CommentSection extends React.Component {
   }
 }
 
-const mapDispatchToProps = { /* getUsers, */ getAllComments };
+const mapDispatchToProps = { getAllComments };
 
 function mapStateToProps(state) {
-  return { comments: state.comments /* , usersList: state.usersList */ };
+  return { comments: state.comments };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CommentSection);

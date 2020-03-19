@@ -1,7 +1,7 @@
 import request from "superagent";
 const baseUrl = "http://localhost:4000";
 
-// Sending a JWT
+// Logging in and sending a JWT:
 
 export const JWT = "JWT";
 function getJWT(payload) {
@@ -11,17 +11,19 @@ function getJWT(payload) {
   };
 }
 
-export const login = (/* loginInfo  */ username, password) => dispatch => {
+export const login = (username, password) => dispatch => {
   const data = { username: username, password: password };
   request
     .post(`${baseUrl}/login`)
-    .send(data /* loginInfo */)
+    .send(data)
     .then(response => {
       const action = getJWT(response.body);
       dispatch(action);
     })
     .catch(console.error);
 };
+
+// Singing up:
 
 export const SIGN_UP = "SIGN_UP";
 function newUser(payload) {

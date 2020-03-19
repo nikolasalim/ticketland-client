@@ -5,9 +5,7 @@ import TicketList from "./TicketList";
 
 class TicketListContainer extends React.Component {
   componentDidMount() {
-    // const { eventId } = this.props.match.params;
-    // console.log("event ID inside TicketListContainer is:", this.props.eventId);
-    this.props.getTickets(/* this.props.eventId */);
+    this.props.getTickets();
   }
 
   render() {
@@ -25,7 +23,7 @@ function mapStateToProps(state) {
     user: state.user,
     events: state.events,
     tickets: state.tickets
-  }; //do I need to access user and events store?
+  };
 }
 
 const mapDispatchToProps = {

@@ -2,7 +2,7 @@ import React from "react";
 import { getEvents } from "../actions/eventActions";
 import { connect } from "react-redux";
 import EventList from "./EventList";
-import AuthPage from "./AuthPage";
+// import AuthPage from "./AuthPage";
 import CreateEventFormContainer from "./CreateEventFormContainer";
 
 let eventsCounter = 0;

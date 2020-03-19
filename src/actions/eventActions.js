@@ -1,7 +1,7 @@
 import request from "superagent";
 const baseUrl = "http://localhost:4000";
 
-// Reading all events
+// Reading all events:
 
 export const GET_ALL_EVENTS = "GET_ALL_EVENTS";
 function gettingEvents(payload) {
@@ -24,7 +24,7 @@ export const getEvents = (limit, offset) => (dispatch, getState) => {
   }
 };
 
-// Reading a specific event
+// Reading a specific event:
 
 export const GET_SINGLE_EVENT = "GET_SINGLE_EVENT";
 function gettingSingleEvent(payload) {
@@ -35,9 +35,6 @@ function gettingSingleEvent(payload) {
 }
 
 export const getSingleEvent = eventId => (dispatch, getState) => {
-  // const state = getState();
-  // const { events } = state;
-
   request(`${baseUrl}/event/${eventId}`)
     .then(response => {
       const action = gettingSingleEvent(response.body);
@@ -46,7 +43,7 @@ export const getSingleEvent = eventId => (dispatch, getState) => {
     .catch(console.error);
 };
 
-// Creating an event
+// Creating an event:
 
 export const ADD_EVENT = "ADD_EVENT";
 function addingEvent(payload) {

@@ -2,7 +2,6 @@ import React from "react";
 import TicketDetails from "./TicketDetails";
 import { connect } from "react-redux";
 import moment from "moment";
-// import singleTicket from "../reducers/singleTicket";
 import { getSingleTicket } from "../actions/ticketActions";
 import CommentContainer from "./CommentContainer";
 // import riskAlgorithm from "../riskAlgorithm";
@@ -10,7 +9,6 @@ import CommentContainer from "./CommentContainer";
 class TicketDetailsContainer extends React.Component {
   componentDidMount() {
     const { ticketId } = this.props.match.params;
-
     this.props.getSingleTicket(ticketId);
   }
 
@@ -25,13 +23,9 @@ class TicketDetailsContainer extends React.Component {
       }
     });
 
-    // console.log("INITIAL risk is:", risk);
-
     if (ticketCount <= 1) {
       risk += 10;
     }
-
-    // console.log("STEP 1: risk is:", risk);
 
     // if the ticket price is lower than the average ticket price for that event, that's a risk:
 
@@ -46,6 +40,7 @@ class TicketDetailsContainer extends React.Component {
     const limitValue = (value, max) => (value > max ? max : value);
 
     // if a ticket is X% cheaper than the average price, add X% to the risk:
+
     if (this.props.singleTicket.price < averagePrice) {
       const percentage =
         ((averagePrice - this.props.singleTicket.price) / averagePrice) * 100;
@@ -58,21 +53,17 @@ class TicketDetailsContainer extends React.Component {
       const percentageLimited = limitValue(percentage, 10);
       risk -= percentageLimited;
     }
-    // console.log("STEP 2: risk is:", risk);
 
     // if the ticket was added during business hours (9-17), deduct 10% from the risk, if not, add 10% to the risk:
 
     const createtAtFormated = moment(this.props.singleTicket.createdAt).format(
       "HH:mm"
     );
-    // console.log("createtAtFormated is:", createtAtFormated);
     if (createtAtFormated < "09:00" || createtAtFormated > "17:00") {
       risk += 5;
     } else {
       risk -= 5;
     }
-
-    // console.log("STEP 3: risk is:", risk);
 
     // if there are >3 comments on the ticket, add 5% to the risk:
 
@@ -84,8 +75,6 @@ class TicketDetailsContainer extends React.Component {
       risk += 5;
     }
 
-    // console.log("STEP 4: risk is:", risk);
-
     const riskLimit = (value, min, max) => {
       if (value < min) {
         return min;
@@ -95,11 +84,6 @@ class TicketDetailsContainer extends React.Component {
         return value;
       }
     };
-
-    // console.log(
-    //   "STEP 5: final risk after limitation is:",
-    //   riskLimit(risk, 5, 95)
-    // );
 
     const finalRisk = riskLimit(risk, 5, 95);
 
@@ -133,7 +117,6 @@ class TicketDetailsContainer extends React.Component {
 function mapStateToProps(state) {
   return {
     singleTicket: state.singleTicket,
-    // moar stuff:
     tickets: state.tickets,
     comments: state.comments
   };
@@ -147,16 +130,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(TicketDetailsContainer);
-
-{
-  /* <EventDetails singleEvent={this.props.singleEvent} />
-        <CreateTicketFormContainer />
-        <TicketListContainer eventId={this.props.match.params.eventId} /> */
-}
-
-// create another reducer for this event, including its respective tickets
-// retrieve the all events reducer and then filter by id on front end
-
-// user: state.user,
-// events: state.events,
-// tickets: state.tickets,

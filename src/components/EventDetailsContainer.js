@@ -23,9 +23,6 @@ class EventDetailsContainer extends React.Component {
   }
 }
 
-// create another reducer for this event, including its respective tickets
-// retrieve the all events reducer and then filter by id on front end
-
 function mapStateToProps(state) {
   return { singleEvent: state.singleEvent };
 }

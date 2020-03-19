@@ -2,7 +2,7 @@ import React from "react";
 import LoginForm from "./LoginForm";
 import { connect } from "react-redux";
 import { login } from "../actions/userActions";
-import { Redirect } from "react-router-dom";
+// import { Redirect } from "react-router-dom";
 
 class LoginFormContainer extends React.Component {
   state = { username: "", password: "" };
@@ -10,8 +10,6 @@ class LoginFormContainer extends React.Component {
   onSubmit = event => {
     event.preventDefault();
     this.props.login(this.state.username, this.state.password);
-    // this.setRedirect();
-    if (2 + 2 === 4) return <Redirect to="/event">a</Redirect>;
   };
 
   onChange = event => {
