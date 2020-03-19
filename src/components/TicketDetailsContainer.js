@@ -15,7 +15,7 @@ class TicketDetailsContainer extends React.Component {
   }
 
   riskAlgorithm = () => {
-    let risk = 5;
+    let risk = 0;
 
     // if the ticket is the only ticket of the author, add 10%:
     let ticketCount = 0;
@@ -24,6 +24,9 @@ class TicketDetailsContainer extends React.Component {
         ticketCount++;
       }
     });
+
+    // console.log("INITIAL risk is:", risk);
+
     if (ticketCount <= 1) {
       risk += 10;
     }

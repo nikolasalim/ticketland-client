@@ -13,8 +13,8 @@ class EventListContainer extends React.Component {
   }
 
   nextHandler = () => {
-    if (eventsCounter + 2 < this.props.events.total) {
-      const limit = 2;
+    if (eventsCounter + 9 < this.props.events.total) {
+      const limit = 9;
       eventsCounter += limit;
 
       const offset = eventsCounter;
@@ -28,7 +28,7 @@ class EventListContainer extends React.Component {
     if (eventsCounter <= 0) {
       return;
     } else {
-      const limit = 2;
+      const limit = 9;
       eventsCounter -= limit;
       const offset = eventsCounter;
       this.props.getEvents(`limit=${limit}`, `offset=${offset}`);
@@ -36,51 +36,51 @@ class EventListContainer extends React.Component {
   };
 
   render() {
-    // if (this.props.events.list.length === 0) {
-    //   return (
-    //     <div>
-    //       <h2>Check out the events:</h2>
-    //       <p>
-    //         Sorry, there are currently no events available. Create yours right
-    //         now:
-    //       </p>
-    //       <CreateEventFormContainer />
-    //     </div>
-    //   );
-    // }
-    // return (
-    //   <div>
-    //     <CreateEventFormContainer />
-    //     <EventList events={this.props.events} />
-    //     <button onClick={this.previousHandler}>PREVIOUS</button>
-    //     <button onClick={this.nextHandler}>NEXT</button>
-    //   </div>
-    // );
-
-    if (!this.props.user) {
-      return <AuthPage />;
-    } else {
-      if (this.props.events.list.length === 0) {
-        return (
-          <div>
-            <h2>Check out the events:</h2>
-            <p>
-              Sorry, there are currently no events available. Create yours right
-              now:
-            </p>
-            <CreateEventFormContainer />
-          </div>
-        );
-      }
+    if (this.props.events.list.length === 0) {
       return (
         <div>
+          <h2>Check out the events:</h2>
+          <p>
+            Sorry, there are currently no events available. Create yours right
+            now:
+          </p>
           <CreateEventFormContainer />
-          <EventList events={this.props.events} />
-          <button onClick={this.previousHandler}>PREVIOUS</button>
-          <button onClick={this.nextHandler}>NEXT</button>
         </div>
       );
     }
+    return (
+      <div>
+        <CreateEventFormContainer />
+        <EventList events={this.props.events} />
+        <button onClick={this.previousHandler}>PREVIOUS</button>
+        <button onClick={this.nextHandler}>NEXT</button>
+      </div>
+    );
+
+    // if (!this.props.user) {
+    //   return <AuthPage />;
+    // } else {
+    //   if (this.props.events.list.length === 0) {
+    //     return (
+    //       <div>
+    //         <h2>Check out the events:</h2>
+    //         <p>
+    //           Sorry, there are currently no events available. Create yours right
+    //           now:
+    //         </p>
+    //         <CreateEventFormContainer />
+    //       </div>
+    //     );
+    //   }
+    //   return (
+    //     <div>
+    //       <CreateEventFormContainer />
+    //       <EventList events={this.props.events} />
+    //       <button onClick={this.previousHandler}>PREVIOUS</button>
+    //       <button onClick={this.nextHandler}>NEXT</button>
+    //     </div>
+    //   );
+    // }
   }
 }
 
