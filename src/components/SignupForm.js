@@ -13,6 +13,7 @@ class SignupForm extends React.Component {
         <input
           value={this.props.values.password}
           name="password"
+          type="password"
           onChange={this.props.onChange}
           placeholder="password:"
         ></input>

@@ -6,8 +6,6 @@ import EventListContainer from "./components/EventListContainer";
 import EventDetailsContainer from "./components/EventDetailsContainer";
 import TicketDetailsContainer from "./components/TicketDetailsContainer";
 import AuthPage from "./components/AuthPage";
-import LandingPage from "./components/LandingPage";
-// import { Redirect } from "react-router-dom";
 import "./App.css";
 
 class App extends React.Component {
@@ -18,9 +16,7 @@ class App extends React.Component {
           <Route path="/ticket/:ticketId" component={TicketDetailsContainer} />
           <Route path="/event/:eventId" component={EventDetailsContainer} />
           <Route path="/event" component={EventListContainer} />
-          <Route path="/login" component={AuthPage} />
-          <Route path="/" component={LandingPage} />
-          {/* <Route path="/" component={EventListContainer} /> */}
+          <Route exact path="/" component={AuthPage} />
         </Switch>
       </Provider>
     );
