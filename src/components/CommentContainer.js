@@ -7,16 +7,18 @@ import CommentSection from "./CommentSection";
 class CommentContainer extends React.Component {
   state = { comment: "", ticketId: null };
 
-  onSubmit = event => {
+  // const { ticketId } = this.props.match.params;
+
+  onSubmit = (event) => {
     event.preventDefault();
     this.state.ticketId = this.props.ticketId;
     this.props.addComment(this.state);
     this.setState({ comment: "", ticketId: null });
   };
 
-  onChange = event => {
+  onChange = (event) => {
     this.setState({
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     });
   };
 
@@ -35,6 +37,8 @@ class CommentContainer extends React.Component {
   }
 }
 
-export default connect(null, {
-  addComment
-})(CommentContainer);
+const mapDispatchToProps = {
+  addComment,
+};
+
+export default connect(null, mapDispatchToProps)(CommentContainer);

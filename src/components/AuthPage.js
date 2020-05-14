@@ -11,6 +11,7 @@ class AuthPage extends React.Component {
     if (!this.props.user) {
       return (
         <div className="main-box">
+          <h2>Welcome to TicketSwag</h2>
           <LoginFormContainer />
           <SignupFormContainer />
           <p>

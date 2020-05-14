@@ -15,7 +15,11 @@ class TicketListContainer extends React.Component {
         ticket => ticket.eventId === parseInt(this.props.eventId)
       ).length === 0
     ) {
-      return <p>No tickets available at the moment.</p>;
+      return (
+        <div className="tickets-box">
+          <p>No tickets available at the moment.</p>
+        </div>
+      );
     } else {
       return (
         <div className="tickets-box">
