@@ -6,7 +6,7 @@ import EventListContainer from "./components/EventListContainer";
 import EventDetailsContainer from "./components/EventDetailsContainer";
 import TicketDetailsContainer from "./components/TicketDetailsContainer";
 import AuthPage from "./components/AuthPage";
-import "./App.css";
+import "./scss/main.css";
 
 class App extends React.Component {
   render() {
