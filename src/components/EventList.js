@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import moment from "moment";
-import "./style/EventList.css";
+// import "./style/EventList.css";
 
 class EventList extends React.Component {
   render() {
@@ -11,7 +11,7 @@ class EventList extends React.Component {
           <h2>Check out the events:</h2>
         </div>
         <div className="events-box">
-          {this.props.events.list.map(event => {
+          {this.props.events.list.map((event) => {
             return (
               <Link to={`/event/${event.id}`} key={event.id}>
                 <div className="single-event">

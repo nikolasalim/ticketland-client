@@ -4,7 +4,7 @@ import SignupFormContainer from "./SignupFormContainer";
 import { connect } from "react-redux";
 import EventListContainer from "./EventListContainer";
 import { Link } from "react-router-dom";
-import "./style/AuthPage.css";
+// import "./style/AuthPage.css";
 
 class AuthPage extends React.Component {
   render() {

@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import EventList from "./EventList";
 // import AuthPage from "./AuthPage";
 import CreateEventFormContainer from "./CreateEventFormContainer";
-import "./style/EventListContainer.css";
+// import "./style/EventListContainer.css";
 
 let eventsCounter = 0;
 

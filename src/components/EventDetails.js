@@ -1,6 +1,6 @@
 import React from "react";
 import moment from "moment";
-import "./style/EventDetails.css";
+// import "./style/EventDetails.css";
 
 class EventDetailsContainer extends React.Component {
   render() {
@@ -9,7 +9,7 @@ class EventDetailsContainer extends React.Component {
       image,
       description,
       start_date,
-      end_date
+      end_date,
     } = this.props.singleEvent;
 
     return (

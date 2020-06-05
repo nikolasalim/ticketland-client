@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { getSingleEvent } from "../actions/eventActions";
 import CreateTicketFormContainer from "./CreateTicketFormContainer";
 import TicketListContainer from "./TicketListContainer";
-import "./style/EventDetailsContainer.css";
+// import "./style/EventDetailsContainer.css";
 
 class EventDetailsContainer extends React.Component {
   componentDidMount() {

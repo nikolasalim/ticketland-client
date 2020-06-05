@@ -2,7 +2,7 @@ import React from "react";
 import { getTickets } from "../actions/ticketActions";
 import { connect } from "react-redux";
 import TicketList from "./TicketList";
-import "./style/TicketListContainer.css";
+// import "./style/TicketListContainer.css";
 
 class TicketListContainer extends React.Component {
   componentDidMount() {
@@ -12,7 +12,7 @@ class TicketListContainer extends React.Component {
   render() {
     if (
       this.props.tickets.filter(
-        ticket => ticket.eventId === parseInt(this.props.eventId)
+        (ticket) => ticket.eventId === parseInt(this.props.eventId)
       ).length === 0
     ) {
       return (
@@ -40,12 +40,12 @@ function mapStateToProps(state) {
   return {
     user: state.user,
     events: state.events,
-    tickets: state.tickets
+    tickets: state.tickets,
   };
 }
 
 const mapDispatchToProps = {
-  getTickets
+  getTickets,
 };
 
 export default connect(
