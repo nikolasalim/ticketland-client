@@ -1,0 +1,41 @@
+@import "../scss/variables";
+@import "../scss/mixins";
+
+.authPage {
+  @include flexCenter(column);
+  @include colorPositive;
+  height: 100vh;
+  width: calc(100vw - (100vw - 100%));
+  font-family: $primary-font;
+
+  .titleBox {
+    @include flexCenter(column);
+    padding: 30px;
+
+    .title,
+    .subtitle {
+      padding-top: 5px;
+    }
+
+    .title {
+      font-size: 70px;
+      font-weight: $bold;
+    }
+    .subtitle {
+      font-size: 20px;
+      font-weight: $regular;
+    }
+  }
+  .authBox {
+    @include flexCenter(column);
+    @include colorNegative();
+
+    border-radius: 20px;
+
+    padding: 30px;
+
+    .browse {
+      // padding: 15px 20px;
+    }
+  }
+}

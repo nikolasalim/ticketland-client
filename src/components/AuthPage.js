@@ -4,19 +4,24 @@ import SignupFormContainer from "./SignupFormContainer";
 import { connect } from "react-redux";
 import EventListContainer from "./EventListContainer";
 import { Link } from "react-router-dom";
-// import "./style/AuthPage.css";
+import "./AuthPage.scss";
 
 class AuthPage extends React.Component {
   render() {
     if (!this.props.user) {
       return (
-        <div className="main-box">
-          <h2>Welcome to TicketLand</h2>
-          <LoginFormContainer />
-          <SignupFormContainer />
-          <p>
-            <Link to="/event">☞ Or click here to browse around.</Link>
-          </p>
+        <div className="authPage">
+          <div className="titleBox">
+            <h2 className="title">Welcome to TicketLand</h2>
+            <h3 className="subtitle">Wanna buy or sell tickets? We gotcha.</h3>
+          </div>
+          <div className="authBox">
+            <LoginFormContainer />
+            <SignupFormContainer />
+            <p className="browse">
+              <Link to="/event">☞ Or click here to browse around.</Link>
+            </p>
+          </div>
         </div>
       );
     } else {

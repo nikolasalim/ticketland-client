@@ -1,6 +1,28 @@
+// Fonts
+
+@mixin h1 {
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+  color: $secondary-color;
+}
+
+// Align
+
 @mixin flexCenter($flex-direction) {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: $flex-direction;
+}
+
+// Color scheme
+
+@mixin colorPositive() {
+  background-color: $primary-color;
+  color: $secondary-color;
+}
+
+@mixin colorNegative() {
+  background-color: $secondary-color;
+  color: $primary-color;
 }
